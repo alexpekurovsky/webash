@@ -37,13 +37,13 @@ class Webash
     def self.run(config_file)
         puts "Starting Webash"
         configure(config_file)
-        @server = WEBrick::HTTPServer.new :Port => nil, :DoNotListen => true, Logger: WEBrick::Log.new("/dev/null")
+        @server = WEBrick::HTTPServer.new :Port => nil, :DoNotListen => true, :Logger => WEBrick::Log.new("/dev/null")
         trap 'INT' do @server.shutdown end
 
         @config["listeners"].each do |listener, listener_config|
             puts "Listening on #{listener}"
             @server.listen("0.0.0.0", listener)
-            vhost = WEBrick::HTTPServer.new :Port => listener, :DoNotListen => true, :ServerName => nil, Logger: WEBrick::Log.new("/dev/null")
+            vhost = WEBrick::HTTPServer.new :Port => listener, :DoNotListen => true, :ServerName => nil, :Logger => WEBrick::Log.new("/dev/null")
 
             listener_config.each do |url_config|
                 puts "Registering #{url_config["url"]} on #{listener}"
