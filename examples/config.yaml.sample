@@ -1,0 +1,16 @@
+listeners:
+  8080:
+    - url: "/"
+      command: "echo 'Hello World!'"
+    - url: "/random"
+      command: "EXIT=$((RANDOM%4)); echo \"$EXIT on 8080 random\"; exit $EXIT"
+    - url: "/param"
+      command: "echo \"param is $param\""
+  8081:
+    - url: "/"
+      command: "echo 'another port'"
+    - url: "/exitcodes"
+      command: "EXIT=$((RANDOM%4)); echo \"$EXIT on 8081 exitcodes\"; exit $EXIT"
+      exit_codes:
+        200: [2]
+        503: [0, 1]

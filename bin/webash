@@ -1,0 +1,17 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'ostruct'
+require 'webash'
+
+options = OpenStruct.new
+
+OptionParser.new do |opt|
+    opt.on('-c', '--config CONFIG', 'Config File location') { |o| options.config_file = o }
+end.parse!
+
+if options.config_file
+    Webash.run options.config_file
+else
+    Webash.show_sample_config
+end
