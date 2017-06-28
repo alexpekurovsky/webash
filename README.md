@@ -10,7 +10,7 @@ It was born after few requirements in a row, that immediately gives overview why
 Just simply run ```gem install webash```
 
 ## Usage
-You can run webash again single config file or config directory with *.yaml files
+You can run webash against single config file or config directory with *.yaml files
 ```webash -c /path/to/config.yaml``` or ```webash -c /path/to/config/dir```
 
 Example of YAML config file you can find in **_examples_** directory
