@@ -41,7 +41,7 @@ You can override default mapping with custom configuration
 listeners:
   8080:
     - url: "/random"
-      command: "EXIT=$((RANDOM%4)); echo \"$EXIT on 8081 url\"; exit $EXIT"
+      command: "EXIT=$((RANDOM%4)); echo \"exit code is $EXIT on 8080 /random \"; exit $EXIT"
       exit_codes:
         200: [2] # return HTTP code 200 if exit code 2
         404: [0, 1] # return HTTP code 404 if exit code is 0 or 1
