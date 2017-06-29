@@ -4,9 +4,7 @@ require 'deep_merge'
 
 class Webash
     def self.show_sample_config
-        matches = Gem::Specification.find_all_by_name 'webash'
-        spec = matches.first
-        filename = File.expand_path('examples/config.yaml.sample', spec.full_gem_path)
+        filename = File.expand_path('examples/config.yaml.sample', Gem.loaded_specs["webash"].full_gem_path)
         puts "Please specify config file. Sample config file can be found at #{filename}"
     end
 
